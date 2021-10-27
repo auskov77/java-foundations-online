@@ -33,7 +33,7 @@ public class PersonTest {
 
     @Test
     @DisplayName("Корректно изменять возраст")
-    public void shoulHaveCorrectUpdateAge(){
+    public void shouldHaveCorrectUpdateAge(){
         Person actualPerson = new Person(DEFAULT_NAME, DEFAULT_AGE);
         actualPerson.setAge(NEW_AGE);
         assertEquals(NEW_AGE, actualPerson.getAge());
