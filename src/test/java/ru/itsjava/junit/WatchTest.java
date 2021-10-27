@@ -30,7 +30,7 @@ public class WatchTest {
 
     @DisplayName(" корректно изменять автора")
     @Test
-    public void shouldHaveCorrectUpdaneWatch() {
+    public void shouldHaveCorrectUpdateWatch() {
         Watch actualwatch = new Watch(DEFAULT_FIRM, DEFAULT_AUTHOR, DEFAULT_PRICE);
         actualwatch.setAuthor(NEW_AUTHOR);
         assertEquals(NEW_AUTHOR, actualwatch.getAuthor());
