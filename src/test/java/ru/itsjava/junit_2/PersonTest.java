@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class PersonTest {
     public static final double DEFAULT_AGE = 18;
+    public static final double NEW_AGE = 19;
     public static final String DEFAULT_NAME = "Elena";
 
     @Test
@@ -17,7 +18,7 @@ public class PersonTest {
     }
 
     @Test
-    @DisplayName("method birthday")
+    @DisplayName("Method birthday")
     public void shouldHaveCorrectMethodBirthday() {
         Person actualPerson = new Person(DEFAULT_NAME, DEFAULT_AGE);
         assertEquals(DEFAULT_AGE + 1, actualPerson.birthday());
@@ -28,6 +29,14 @@ public class PersonTest {
     public void shouldHaveCorrectMethodTakeBeer() {
         Person actualPerson = new Person(DEFAULT_NAME, DEFAULT_AGE);
         assertFalse(actualPerson.takeBeer());
+    }
+
+    @Test
+    @DisplayName("Корректно изменять возраст")
+    public void shoulHaveCorrectUpdateAge(){
+        Person actualPerson = new Person(DEFAULT_NAME, DEFAULT_AGE);
+        actualPerson.setAge(NEW_AGE);
+        assertEquals(NEW_AGE, actualPerson.getAge());
     }
 
 }
