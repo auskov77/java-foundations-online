@@ -7,40 +7,37 @@ public class Main {
         Person woman = new Person("Elena", 18);
         Person nobody = new Person("Nobody", 200);
 
+
         try {
-            if ((man.getAge() >= 0) & (man.getAge() <= 150)) {
-                System.out.print(man.getName() + ", возраст = " + man.getAge());
-                man.getAgeInInterval();
-            }
+            if ((man.getAge() > 0) & (man.getAge() < 150)) {
+                System.out.println(man.getName() + ", возраст = " + man.getAgeInInterval());
+            }else
+            throw new AgeNotValidException("неверный возраст");
         } catch (AgeNotValidException an) {
-            if ((man.getAge() < 0) | (man.getAge() > 150)) {
-                System.out.println("Возраст меньше нуля или больше 150");
+            System.out.println(man.getName() + " = возраст меньше нуля или больше 150");
+            an.printStackTrace();
+        }
+
+        try {
+            if ((woman.getAge() > 0) & (woman.getAge() < 150)) {
+                System.out.println(woman.getName() + ", возраст = " + woman.getAgeInInterval());
+            } else
+            throw new AgeNotValidException("неверный возраст");
+        } catch (AgeNotValidException an) {
+            if ((woman.getAge() <= 0) | (woman.getAge() >= 150)) {
+                System.out.println(woman.getName() + " = возраст меньше нуля или больше 150");
                 an.printStackTrace();
             }
         }
-        System.out.println();
 
         try {
-            if ((woman.getAge() >= 0) & (woman.getAge() <= 150)) {
-                System.out.print(woman.getName() + ", возраст = " + woman.getAge());
-                woman.getAgeInInterval();
+            if ((nobody.getAge() > 0) & (nobody.getAge() < 150)) {
+                System.out.println(nobody.getName() + ", возраст = " + nobody.getAgeInInterval());
             }
+            throw new AgeNotValidException("неверный возраст");
         } catch (AgeNotValidException an) {
-            if ((woman.getAge() < 0) | (woman.getAge() > 150)) {
-                System.out.println("Возраст меньше нуля или больше 150");
-                an.printStackTrace();
-            }
-        }
-        System.out.println();
-
-        try {
-            if ((nobody.getAge() >= 0) & (nobody.getAge() <= 150)) {
-                System.out.print(nobody.getName() + ", возраст = " + nobody.getAge());
-                nobody.getAgeInInterval();
-            }
-        } catch (AgeNotValidException an) {
-            if ((nobody.getAge() < 0) | (nobody.getAge() > 150)) {
-                System.out.println("Возраст меньше нуля или больше 150");
+            if ((nobody.getAge() <= 0) | (nobody.getAge() >= 150)) {
+                System.out.println(nobody.getName() + " = возраст меньше нуля или больше 150");
                 an.printStackTrace();
             }
         }
