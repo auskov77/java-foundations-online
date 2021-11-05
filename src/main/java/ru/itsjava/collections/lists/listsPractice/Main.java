@@ -76,7 +76,7 @@ public class Main {
         System.out.println();
 
         List<Book> bookList_3 = new ArrayList<>();
-        bookList_3.addAll(0,bookList_2); // Записать в новый список все элементы предыдущего списка
+        bookList_3.addAll(0, bookList_2); // Записать в новый список все элементы предыдущего списка
         for (Book elemBook: bookList_3){
             System.out.println(elemBook + " ");
         }
