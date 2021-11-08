@@ -38,7 +38,7 @@ public class ExceptionPractice {
         try {
             System.out.println("calculator.division(5,0) = " + calculator.division(5, 0));
 
-        } catch (CalculatorException ce){
+        } catch (CalculatorException ce) {
             System.out.println("Вы вели что-то не то");
             ce.printStackTrace();
         }
