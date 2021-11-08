@@ -22,8 +22,9 @@ public class Main {
 
         try {
             System.out.println(nobody.getName() + ", возраст = " + nobody.getAgeInInterval());
-        } catch (AgeNotValidException ageNotValidException) {
-            System.out.print(nobody.getName() + " = возраст меньше нуля или больше 150 " + ageNotValidException);
+        } catch (AgeNotValidException an) {
+            System.out.print(nobody.getName() + " = возраст меньше нуля или больше 150 ");
+            an.printStackTrace();
         }
 //
 //        try {
