@@ -12,21 +12,18 @@ public class Main {
             System.out.println(man.getName() + ", возраст = " + man.getAgeInInterval());
         } catch (AgeNotValidException ageNotValidException) {
             System.out.print(man.getName() + " = возраст меньше нуля или больше 150 " + ageNotValidException);
-//            System.out.println(ageNotValidException);
         }
 
         try {
             System.out.println(woman.getName() + ", возраст = " + woman.getAgeInInterval());
         } catch (AgeNotValidException ageNotValidException) {
             System.out.print(woman.getName() + " = возраст меньше нуля или больше 150 " + ageNotValidException);
-//            System.out.println(ageNotValidException);
         }
 
         try {
             System.out.println(nobody.getName() + ", возраст = " + nobody.getAgeInInterval());
         } catch (AgeNotValidException ageNotValidException) {
             System.out.print(nobody.getName() + " = возраст меньше нуля или больше 150 " + ageNotValidException);
-//            System.out.println(ageNotValidException);
         }
 //
 //        try {
