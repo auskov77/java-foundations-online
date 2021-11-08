@@ -137,11 +137,15 @@ public class Main {
 
         // Пропустить первые 3 книги в списке
         System.out.println("Пропустить первые 3 книги в списке: ");
-        for (int i = 0; i < bookList_3.size(); i++) {
-            if (i > 2) {
+        for (int i = 3; i < bookList_3.size(); i++) {
                 System.out.println(bookList_3.get(i) + " ");
-            }
         }
+//        System.out.println("Пропустить первые 3 книги в списке: ");
+//        for (int i = 0; i < bookList_3.size(); i++) {
+//            if (i > 2) {
+//                System.out.println(bookList_3.get(i) + " ");
+//            }
+//        }
         System.out.println();
 
         // Пропустить первые 2 книги, которые равные "Java"
