@@ -10,10 +10,9 @@ public class Person {
     private int age;
 
     public int getAgeInInterval() {
-        try {
-                return age;
-        } catch (ArithmeticException arithmeticException) {
+        if ((age < 0) || (age > 150)) {
             throw new AgeNotValidException("неверный возраст");
         }
+        return age;
     }
 }
