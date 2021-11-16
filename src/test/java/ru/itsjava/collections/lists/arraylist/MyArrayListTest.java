@@ -25,6 +25,7 @@ public class MyArrayListTest {
     @Test
     @DisplayName("Проверка метода clear()")
     public void shouldCorrectMethodClear(){
+        List.clear();
         Assertions.assertTrue(List.isEmpty());
     }
 }
