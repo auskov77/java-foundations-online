@@ -16,12 +16,19 @@ public class MyArrayList {
         return realSize;
     }
 
-    public boolean isEmpty() {
-        return false;
+    public boolean isEmpty() { // возвращает true, если этот список не содержит элементов
+        return realSize == 0;
     }
 
-    public boolean contains(Object o) {
-        return false;
+    public boolean contains(Object o) { // Возвращает true, если данный элемент присутствует в множестве
+        boolean resContains = false;
+        for (Object value : array) {
+            if (value.equals(o)) {
+                resContains = true;
+                break;
+            }
+        }
+        return resContains;
     }
 
     public boolean add(Object o) {
@@ -40,8 +47,11 @@ public class MyArrayList {
         return false;
     }
 
-    public void clear() {
-
+    public void clear() { // используется для очистки коллекции, для которой он вызывается
+        for (int i = 0; i < realSize; i++) {
+            array[i] = null;
+        }
+        realSize = 0;
     }
 
     public Object get(int index) {

@@ -20,5 +20,12 @@ public class MyArrayListPractice {
 
         System.out.println(List);
 
+        System.out.println("List.isEmpty() = " + List.isEmpty());
+
+        System.out.println("List.contains(\"Привет\") = " + List.contains("Привет"));
+
+        List.clear();
+        System.out.println(List);
+
     }
 }
