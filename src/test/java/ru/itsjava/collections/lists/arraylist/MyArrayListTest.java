@@ -4,8 +4,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-
 public class MyArrayListTest {
     MyArrayList List = new MyArrayList();
 
@@ -13,6 +11,8 @@ public class MyArrayListTest {
     @DisplayName("Проверка метода isEmpty()")
     public void shouldCorrectMethodIsEmpty(){
         Assertions.assertTrue(List.isEmpty());
+        List.add("Privet");
+        Assertions.assertFalse(List.isEmpty());
     }
 
     @Test
@@ -20,11 +20,15 @@ public class MyArrayListTest {
     public void shouldCorrectMethodContains(){
         List.add("Privet");
         Assertions.assertTrue(List.contains("Privet"));
+        Assertions.assertFalse(List.contains("Ok!"));
     }
 
     @Test
     @DisplayName("Проверка метода clear()")
     public void shouldCorrectMethodClear(){
+        List.add("Privet");
+        List.add("Poka");
+        Assertions.assertFalse(List.isEmpty());
         List.clear();
         Assertions.assertTrue(List.isEmpty());
     }

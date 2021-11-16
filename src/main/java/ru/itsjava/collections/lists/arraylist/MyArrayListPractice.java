@@ -23,6 +23,7 @@ public class MyArrayListPractice {
         System.out.println("List.isEmpty() = " + List.isEmpty());
 
         System.out.println("List.contains(\"Привет\") = " + List.contains("Привет"));
+        System.out.println("List.contains(\"Ок!\") = " + List.contains("Ок!"));
 
         List.clear();
         System.out.println(List);

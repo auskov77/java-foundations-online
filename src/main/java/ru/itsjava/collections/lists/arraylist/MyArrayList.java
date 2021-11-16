@@ -22,8 +22,8 @@ public class MyArrayList {
 
     public boolean contains(Object o) { // Возвращает true, если данный элемент присутствует в множестве
         boolean resContains = false;
-        for (Object value : array) {
-            if (value.equals(o)) {
+        for (int i = 0; i < realSize; i++) {
+            if ((array[i] == o) && (array[i] != null)) {
                 resContains = true;
                 break;
             }
