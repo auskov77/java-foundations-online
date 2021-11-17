@@ -1,5 +1,7 @@
 package ru.itsjava.collections.lists.arraylist;
 
+import java.util.List;
+
 public class MyArrayList {
     private static final int DEFAULT_CAPACITY = 10;
     private int capacity;
@@ -43,22 +45,35 @@ public class MyArrayList {
     }
 
     public boolean remove(Object o) {               // удаляем объект о из списка
-        if (o == null) {                            // проверка условия что объект о не пустой
-            for (int i = 0; i < realSize; i++) {    // цикл от 0 до realSize с шагом 1 - проверка элементов массива
-                if (array[i] == null){              // проверка условия что элемент массива с индексом i не пустой
-                    remove(i);                      // удаляем элемент с индексом i
-                    return true;                    // возвращаем истину
-                }
-            }
-        }else {                                     // иначе
-            for (int i = 0; i < realSize; i++) {    // цикл от 0 до realSize с шагом 1 - проверка элементов массива
-                if (o.equals(array[i])){            // проверка условия что объект о совпадает с элементом массива i
-                    remove(i);                      // удаляем элемент с индексом i
-                    return true;                    // возвращаем истину
-                }
+//        if (o == null) {                            // проверка условия что объект о не пустой
+//            for (int i = 0; i < realSize; i++) {    // цикл от 0 до realSize с шагом 1 - проверка элементов массива
+//                if (array[i] == null){              // проверка условия что элемент массива с индексом i не пустой
+//                    remove(i);                      // удаляем элемент с индексом i
+//                    return true;                    // возвращаем истину
+//                }
+//            }
+//        }else {                                     // иначе
+//            for (int i = 0; i < realSize; i++) {    // цикл от 0 до realSize с шагом 1 - проверка элементов массива
+//                if (o.equals(array[i])){            // проверка условия что объект о совпадает с элементом массива i
+//                    remove(i);                      // удаляем элемент с индексом i
+//                    return true;                    // возвращаем истину
+//                }
+//            }
+//        }
+//        return false;                               // возвращаем ложь
+
+        int delIndex = -1;
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] != null && array[i].equals(o)) {
+                delIndex = i;
+                break;
             }
         }
-        return false;                               // возвращаем ложь
+        if (array.length - 1 - delIndex >= 0) {
+            System.arraycopy(array, delIndex + 1, array, delIndex, array.length - 1 - delIndex);
+        }
+        realSize--;
+        return true;
     }
 
     public void clear() { // используется для очистки коллекции, для которой он вызывается
