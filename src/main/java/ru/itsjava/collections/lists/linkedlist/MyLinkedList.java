@@ -59,7 +59,39 @@ public class MyLinkedList {
     }
 
     public boolean remove(Object o) {
-        return false;
+        // начинаем с проверки того что head == null, т.е. если условие равно то возвращаем false и все
+        if (head == null) {
+            return false;
+        }
+        // если head не равен null, то проверяем м.б. он совпадает с этим элементом, если совпадает то перенаправляем ссылку на следующий элемент
+        if (head.getValue().equals(o)) {
+            head = head.getNext(); // переводим указатель на следующий элемент
+            return true; // возвращаем истину
+        }
+        // если head не равен null и не совпадает с о и если это последний элемент то возвращаем false, т.е. проверяем есть ли элемент после head
+        if (head.getNext() == null) {
+            return false;
+        }
+        // далее создаем промежуточные pervNode и curNode и приравниваем их head
+        Node curNode = head;
+        Node prevNode = head;
+        // даллее пробегаемся по списку до того момента, пока pervNode и curNode не будут равны null
+        while ((curNode = curNode.getNext()) != null) { // здесь одновременно присваиваем следующий элемент и проверяем на null
+            if (curNode.getValue().equals(o)) { // проверяем условие совпадения значения curNode и объекта о
+                break; // при совпадении условия выходим из цикла
+            }
+            prevNode = prevNode.getNext(); // перемещаем prevNode
+        }
+        // проверяем текущий узел на null
+        if (curNode == null) {
+            return false; // если null возвращаем ложь
+        }
+        // для удаления элемента переназнаяаем ссылку
+        prevNode.setNext(curNode.getNext());
+        // удаляемому элементу присваеваем null
+        curNode.setNext(null);
+        // возвращаем истину
+        return true;
     }
 
     public void clear() {
@@ -75,8 +107,9 @@ public class MyLinkedList {
 
         Node curNode = head;
         for (int i = 0; i < index; i++) {
-            if (curNode.getNext() == null)
+            if (curNode.getNext() == null) {
                 return null;
+            }
             curNode = curNode.getNext();
         }
         return curNode.getValue();
@@ -166,12 +199,29 @@ public class MyLinkedList {
         return (index > -1) && (index < size());
     }
 
-    public int indexOf(Object o) {
-        return 0;
+    public int indexOf(Object o) { // возвращает индекс первого вхождения указанного объекта o
+        int index = 0;
+        Node curNode = head;
+        while (curNode != null) {
+            if (curNode.getValue().equals(o)) {
+                return index;
+            }
+            index++;
+            curNode = curNode.getNext();
+        }
+        return -1;
     }
 
-    public int lastIndexOf(Object o) {
-        return 0;
+    public int lastIndexOf(Object o) { // возвращает индекс последнего вхождения указанного значения в строковый объект String, на котором он был вызван, или -1, если ничего не было найдено
+        int index = 0;
+        Node curNode = head;
+        while (curNode.getNext() != null) {
+            if (curNode.getValue().equals(o)) {
+                index++;
+            }
+            curNode = curNode.getNext();
+        }
+        return index;
     }
 
     @Override

@@ -4,8 +4,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class MyLinkedListTest {
     MyLinkedList List = new MyLinkedList();
 
@@ -15,7 +13,6 @@ class MyLinkedListTest {
         Assertions.assertEquals(0, List.size());
         List.add("Строка_1");
         Assertions.assertEquals(1, List.size());
-
     }
 
     @Test
@@ -65,5 +62,24 @@ class MyLinkedListTest {
         Assertions.assertEquals("Строка_1", List.get(0));
         Assertions.assertEquals("Новая_строка", List.get(1));
         Assertions.assertEquals("Строка_3", List.get(2));
+    }
+
+    @Test
+    @DisplayName("Проверка метода int indexOf(Object o)")
+    void shouldCorrectMethodIndexOf() {
+        List.add("Строка_1");
+        List.add("Строка_2");
+        Assertions.assertEquals(0, List.indexOf("Строка_1"));
+        Assertions.assertEquals(1, List.indexOf("Строка_2"));
+        Assertions.assertEquals(-1, List.indexOf("Строка_3"));
+    }
+
+    @Test
+    @DisplayName("Проверка метода int lastIndexOf(Object o)")
+    void shouldCorrectMethodLastIndexOf() {
+        List.add("Строка_1");
+        List.add("Строка_1");
+        List.add("Строка_1");
+        Assertions.assertEquals(2, List.lastIndexOf("Строка_1"));
     }
 }
