@@ -33,4 +33,37 @@ class MyLinkedListTest {
         List.add("Строка_1");
         Assertions.assertTrue(List.contains("Строка_1"));
     }
+
+    @Test
+    @DisplayName("Проверка метода void clear()")
+    void shouldCorrectMethodClear() {
+        List.add("Строка_1");
+        List.add("Строка_2");
+        Assertions.assertEquals(2, List.size());
+        List.clear();
+        Assertions.assertEquals(0, List.size());
+    }
+
+    @Test
+    @DisplayName("Проверка метода Object get(int index)")
+    void shouldCorrectMethodGet() {
+        List.add("Строка_1");
+        List.add("Строка_2");
+        List.add("Строка_3");
+        Assertions.assertEquals("Строка_1", List.get(0));
+        Assertions.assertEquals("Строка_2", List.get(1));
+        Assertions.assertEquals("Строка_3", List.get(2));
+    }
+
+    @Test
+    @DisplayName("Проверка метода Object set(int index, Object element)")
+    void shouldCorrectMethodSet() {
+        List.add("Строка_1");
+        List.add("Строка_2");
+        List.add("Строка_3");
+        List.set(1, "Новая_строка");
+        Assertions.assertEquals("Строка_1", List.get(0));
+        Assertions.assertEquals("Новая_строка", List.get(1));
+        Assertions.assertEquals("Строка_3", List.get(2));
+    }
 }
