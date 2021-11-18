@@ -4,6 +4,9 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.Collection;
+
 public class MyArrayListTest {
     MyArrayList List = new MyArrayList();
 
@@ -52,7 +55,7 @@ public class MyArrayListTest {
 
     @Test
     @DisplayName("Проверка метода add(int index, Object element)")
-    public void shouldCorrectMethodAdd(){
+    public void shouldCorrectMethodAdd() {
         List.add("e_1");
         List.add("e_2");
         List.add(1, "Подвинься!");
@@ -62,7 +65,7 @@ public class MyArrayListTest {
 
     @Test
     @DisplayName("Проверка метода indexOf(Object o)")
-    public void shouldCorrectMethodIndexOf(){
+    public void shouldCorrectMethodIndexOf() {
         List.add("e_1");
         Assertions.assertEquals(0, List.indexOf("e_1"));
         Assertions.assertEquals(-1, List.indexOf("e_2"));
@@ -70,7 +73,7 @@ public class MyArrayListTest {
 
     @Test
     @DisplayName("Проверка метода lastIndexOf(Object o)")
-    public void shouldCorrectMethodLastIndexOf(){
+    public void shouldCorrectMethodLastIndexOf() {
         List.add("e_1");
         List.add("e_1");
         Assertions.assertEquals(1, List.lastIndexOf("e_1"));
@@ -79,14 +82,14 @@ public class MyArrayListTest {
 
     @Test
     @DisplayName("Проверка метода size()")
-    public void shouldCorrectMethodSize(){
+    public void shouldCorrectMethodSize() {
         List.add("e_1");
         Assertions.assertEquals(1, List.size());
     }
 
     @Test
     @DisplayName("Проверка метода remove(Object o)")
-    public void shouldCorrectMethodRemove(){
+    public void shouldCorrectMethodRemove() {
         List.add("e_1");
         Assertions.assertEquals(1, List.size());
         List.remove("e_1");
@@ -95,7 +98,7 @@ public class MyArrayListTest {
 
     @Test
     @DisplayName("Проверка метода remove(int index)")
-    public void shouldCorrectMethodRemoveIndex(){
+    public void shouldCorrectMethodRemoveIndex() {
         List.add("e_1");
         List.add("e_2");
         Assertions.assertEquals(2, List.size());
@@ -103,5 +106,30 @@ public class MyArrayListTest {
         Assertions.assertEquals(1, List.size());
     }
 
+    @Test
+    @DisplayName("Проверка метода Object[] toArray()")
+    public void shouldCorrectMethodToArray() {
+        List.add("e_1");
+        List.add("e_2");
+        Assertions.assertEquals("[e_1, e_2]", Arrays.toString(List.toArray()));
+    }
 
+    @Test
+    @DisplayName("Проверка метода Object[] toArray(Object[] a)")
+    public void shouldCorrectMethodToArrayObjectA() {
+        List.add("e_1");
+        List.add("e_2");
+        Assertions.assertEquals("[e_1, e_2]", Arrays.toString(List.toArray()));
+    }
+
+    @Test
+    @DisplayName("Проверка метода subList(int fromIndex, int toIndex)")
+    public void shouldCorrectMethodSubList() {
+        List.add("e_1");
+        List.add("e_2");
+        List.add("e_3");
+        List.add("e_4");
+        List.add("e_5");
+        Assertions.assertEquals("[e_2, e_3, e_4]", Arrays.toString(List.subList(1,3)));
+    }
 }
