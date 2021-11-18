@@ -1,5 +1,8 @@
 package ru.itsjava.collections.lists.arraylist;
 
+import java.util.Arrays;
+import java.util.Collection;
+
 public class MyArrayListPractice {
     public static void main(String[] args) {
         MyArrayList List = new MyArrayList();
@@ -98,5 +101,22 @@ public class MyArrayListPractice {
 
         System.out.println(List);
         System.out.println("List.lastIndexOf(\"Пока\") = " + List.lastIndexOf("Пока"));
+
+        System.out.println("List.toArray() = " + Arrays.toString(List.toArray()));
+        System.out.println("List2.toArray() = " + Arrays.toString(List2.toArray()));
+
+        MyArrayList List3 = new MyArrayList();
+        List3.add(1);
+        List3.add(2);
+        List3.add(3);
+        List3.add(4);
+        List3.add(5);
+        System.out.println(List3);
+        System.out.println(Arrays.toString(List3.subList(1, 3)));
+
+        System.out.println(Arrays.toString(List.subList(1, 3)));
+
+        System.out.println(Arrays.toString(List2.subList(1, 3)));
+
     }
 }
