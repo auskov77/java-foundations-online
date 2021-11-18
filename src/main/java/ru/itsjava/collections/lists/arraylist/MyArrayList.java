@@ -157,9 +157,9 @@ public class MyArrayList {
     public void add(int index, Object element) { // добавить элемент на указанную позицию
         checkIndex(index);
 
-        if (newSize + 1 >= capacity) { //если в массиве места нет
-            increasingArrayCapacity(); //вызываем метод, который отвечает за увеличение массива
-        }
+//        if (newSize + 1 >= capacity) { //если в массиве места нет
+//            increasingArrayCapacity(); //вызываем метод, который отвечает за увеличение массива
+//        }
         if (newSize + 1 - index >= 0) System.arraycopy(array, index - 1, array, index, newSize + 1 - index);
         array[index] = element;
         newSize++;
@@ -167,7 +167,7 @@ public class MyArrayList {
 
     // метод для увеличения емкости массива
     private void increasingArrayCapacity() {
-        capacity = newSize + 1;
+        capacity = (newSize * 3) / 2 + 1;
         Object[] newArray = new Object[capacity];
         for (int i = 0; i < newSize; i++) {
             newArray[i] = array[i];
