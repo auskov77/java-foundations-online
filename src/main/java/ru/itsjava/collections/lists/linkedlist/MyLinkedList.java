@@ -23,7 +23,8 @@ public class MyLinkedList {
 
     public boolean isEmpty() {
         // проверить head на null, если head не равен null, то head не пустой
-        return head != null;
+        return head == null;
+//        return head != null;
     }
 
     public boolean contains(Object o) {
@@ -34,7 +35,7 @@ public class MyLinkedList {
         } else {
             Node curNode = head;
             while (curNode.getNext() != null) {
-                if (head.getValue().equals(o)) {
+                if (curNode.getValue().equals(o)) {
                     break;
                 }
                 curNode = curNode.getNext();

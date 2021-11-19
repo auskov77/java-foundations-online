@@ -18,17 +18,20 @@ class MyLinkedListTest {
     @Test
     @DisplayName("Проверка метода boolean isEmpty()")
     void shouldCorrectMethodIsEmpty() {
-        Assertions.assertFalse(List.isEmpty());
-        List.add("Строка_1");
         Assertions.assertTrue(List.isEmpty());
+        List.add("Строка_1");
+        Assertions.assertFalse(List.isEmpty());
     }
 
     @Test
     @DisplayName("Проверка метода boolean contains(Object o)")
     void shouldCorrectMethodContains() {
         Assertions.assertFalse(List.contains("Строка_1"));
+        Assertions.assertFalse(List.contains("Строка_2"));
         List.add("Строка_1");
+        List.add("Строка_2");
         Assertions.assertTrue(List.contains("Строка_1"));
+        Assertions.assertTrue(List.contains("Строка_2"));
     }
 
     @Test
