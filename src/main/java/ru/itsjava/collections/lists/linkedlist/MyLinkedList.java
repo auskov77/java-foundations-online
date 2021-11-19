@@ -97,10 +97,12 @@ public class MyLinkedList {
 
     public void clear() {
         Node curNode = head;
-        while (curNode.getNext() != null) {
-            curNode = curNode.getNext();
-            head = null;
+        Node prevNode = head;
+        while ((curNode = curNode.getNext()) != null) {
+            prevNode = prevNode.getNext();
+            prevNode.setNext(curNode.getNext());
         }
+        head = null;
     }
 
     public Object get(int index) {
