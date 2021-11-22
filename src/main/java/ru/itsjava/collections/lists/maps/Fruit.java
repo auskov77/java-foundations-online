@@ -7,5 +7,5 @@ import lombok.Data;
 @Data
 public class Fruit {
     private final String name;
-    private final int weight;
+    private final double weight;
 }
