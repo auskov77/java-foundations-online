@@ -1,7 +1,5 @@
 package ru.itsjava.iostreams;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
@@ -9,21 +7,15 @@ import java.util.Properties;
 public class MyPropertiesPractice {
 
     public static void main(String[] args) throws IOException {
-        File file = new File("src/main/resources/application.properties");
-
-        Properties props = new Properties();
-        props.load(new FileInputStream(file));
-
-        System.out.println("props.getProperty(\"key1\") = " + props.getProperty("key1"));
-
-        props.setProperty("key2", "value2");
-        System.out.println("props.getProperty(\"key2\") = " + props.getProperty("key2"));
-
         ClassLoader classLoader = MyPropertiesPractice.class.getClassLoader();
-        InputStream inputStream = classLoader.getResourceAsStream("application.properties");
+        InputStream inputStream = classLoader.getResourceAsStream("myapp.properties");
 
         Properties propsFromStream = new Properties();
         propsFromStream.load(inputStream);
-        System.out.println("propsFromStream.getProperty(\"key1\") = " + propsFromStream.getProperty("key1"));
+        System.out.println("Мое имя = " + propsFromStream.getProperty("myName"));
+        System.out.println("Мой никнейм = " + propsFromStream.getProperty("myNickName"));
     }
 }
+
+//1. Создать свои настройки app.properties, в которых будут лежать твое имя и никнейм.  - yes
+//2. Считать и вывести настройки на экран с помощью getResourceAsStream                 - yes
