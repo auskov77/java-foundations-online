@@ -32,10 +32,11 @@ public class MyLinkedListPractice {
 
         List.clear();
         System.out.println(List);
+        System.out.println("List.size() = " + List.size());
+
         MyLinkedList List3 = new MyLinkedList();
         System.out.println(List3);
         System.out.println("List3.size() = " + List3.size());
-        System.out.println("List.size() = " + List.size());
 
 //        List.add("Строка_1");
 //        List.add("Строка_2");

@@ -99,8 +99,8 @@ public class MyLinkedList {
         Node curNode = head;
         Node prevNode = head;
         while ((curNode = curNode.getNext()) != null) {
-            prevNode = prevNode.getNext();
-            prevNode.setNext(curNode.getNext());
+            prevNode.setNext(null);
+            prevNode = curNode;
         }
         head = null;
     }
