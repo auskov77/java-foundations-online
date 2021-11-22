@@ -9,8 +9,6 @@ import java.util.stream.Stream;
 
 public class PropertiesPractice {
 
-    private static InputStream resourceAsStream;
-
     public static void main(String[] args) throws IOException {
         File file = new File("src/main/resources/application.properties");
 
