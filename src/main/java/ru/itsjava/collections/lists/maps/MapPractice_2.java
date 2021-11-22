@@ -2,6 +2,7 @@ package ru.itsjava.collections.lists.maps;
 
 import java.text.DecimalFormat;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 public class MapPractice_2 {
@@ -27,20 +28,20 @@ public class MapPractice_2 {
         manFruitMapOld.put(javov, plum);
 
 
-        for (Map.Entry<Man, Fruit> pair: manFruitMapOld.entrySet()){
+        for (Map.Entry<Man, Fruit> pair : manFruitMapOld.entrySet()) {
             System.out.println(pair.getKey() + ": " + pair.getValue());
         }
         System.out.println("manFruitMapOld.size() = " + manFruitMapOld.size());
         System.out.println();
 
         System.out.println("manFruitMapNew");
-        manFruitMapNew.put(ivanov,cherry);
+        manFruitMapNew.put(ivanov, cherry);
         manFruitMapNew.put(sidorov, cherry);
         manFruitMapNew.put(javov, cherry);
         manFruitMapNew.put(petrov, grape);
         manFruitMapNew.put(uskov, grape);
 
-        for (Map.Entry<Man, Fruit> pair: manFruitMapNew.entrySet()){
+        for (Map.Entry<Man, Fruit> pair : manFruitMapNew.entrySet()) {
             System.out.println(pair.getKey() + ": " + pair.getValue());
         }
         System.out.println("manFruitMapNew.size() = " + manFruitMapNew.size());
@@ -49,7 +50,7 @@ public class MapPractice_2 {
         System.out.println("В новый экземпляр HashMap добавим старую карту");
         manFruitMapNew.putAll(manFruitMapOld);
 
-        for (Map.Entry<Man, Fruit> pair: manFruitMapNew.entrySet()){
+        for (Map.Entry<Man, Fruit> pair : manFruitMapNew.entrySet()) {
             System.out.println(pair.getKey() + ": " + pair.getValue());
         }
         System.out.println("manFruitMapNew.size() = " + manFruitMapNew.size());
@@ -72,19 +73,19 @@ public class MapPractice_2 {
         System.out.println();
 
         System.out.println("Вывести все ключи (всех покупателей)");
-        for (Man keyMan : manFruitMapNew.keySet()){
+        for (Man keyMan : manFruitMapNew.keySet()) {
             System.out.println(keyMan);
         }
         System.out.println();
 
         System.out.println("Вывести все значения (все фрукты)");
-        for (Fruit valueFruit : manFruitMapNew.values()){
+        for (Fruit valueFruit : manFruitMapNew.values()) {
             System.out.println(valueFruit);
         }
         System.out.println();
 
         System.out.println("Вывести все ключи и значения с помощью entrySet (всех покупателей и фрукты)");
-        for (Map.Entry<Man, Fruit> pair: manFruitMapOld.entrySet()){
+        for (Map.Entry<Man, Fruit> pair : manFruitMapOld.entrySet()) {
             System.out.println(pair.getKey() + ": " + pair.getValue());
         }
         System.out.println();
@@ -125,13 +126,21 @@ public class MapPractice_2 {
             System.out.println(pair.getKey() + ": " + pair.getValue());
         }
         System.out.println();
-        for (Map.Entry<Man, Fruit> pair : manFruitMapNew.entrySet()) {
+//        for (Map.Entry<Man, Fruit> pair : manFruitMapNew.entrySet()) {
+//            if (pair.getValue().getName().contains("Watermelon") && count <= 1) {
+//                manFruitMapSuperNew.remove(pair.getKey());
+//                count++;
+//            }
+//        }
+        System.out.println("Множество - результат применения условия:");
+        Iterator<Map.Entry<Man, Fruit>> iteratorManFruit = manFruitMapSuperNew.entrySet().iterator();
+        while (iteratorManFruit.hasNext()) {
+            Map.Entry<Man, Fruit> pair = iteratorManFruit.next();
             if (pair.getValue().getName().contains("Watermelon") && count <= 1) {
-                manFruitMapSuperNew.remove(pair.getKey());
+                iteratorManFruit.remove();
                 count++;
             }
         }
-        System.out.println("Множество - результат применения условия:");
         for (Map.Entry<Man, Fruit> pair : manFruitMapSuperNew.entrySet()) {
             System.out.println(pair.getKey() + ": " + pair.getValue());
         }
@@ -151,13 +160,21 @@ public class MapPractice_2 {
         }
         System.out.println();
         int count2 = 0;
-        for (Map.Entry<Man, Fruit> pair : manFruitMapNew.entrySet()) {
+//        for (Map.Entry<Man, Fruit> pair : manFruitMapNew.entrySet()) {
+//            if (pair.getKey().getName().contains("A") & count2 < 2) {
+//                manFruitMapSuperNew2.remove(pair.getKey());
+//                count2++;
+//            }
+//        }
+        System.out.println("Множество - результат применения условия:");
+        Iterator<Map.Entry<Man, Fruit>> iteratorManFruitNew = manFruitMapSuperNew2.entrySet().iterator();
+        while (iteratorManFruitNew.hasNext()) {
+            Map.Entry<Man, Fruit> pair = iteratorManFruitNew.next();
             if (pair.getKey().getName().contains("A") & count2 < 2) {
-                manFruitMapSuperNew2.remove(pair.getKey());
+                iteratorManFruitNew.remove();
                 count2++;
             }
         }
-        System.out.println("Множество - результат применения условия:");
         for (Map.Entry<Man, Fruit> pair : manFruitMapSuperNew2.entrySet()) {
             System.out.println(pair.getKey() + ": " + pair.getValue());
         }
