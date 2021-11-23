@@ -2,19 +2,17 @@ package ru.itsjava.threads;
 
 public class MyThreadPractice {
     public static void main(String[] args) throws InterruptedException{
-        System.out.println("Thread.currentThread().getName() = " + Thread.currentThread().getName());
+        // 1 2 3 4 5      6 7 8 9 10    11 12 13 14 15
+        //         First          First             First
+        //         Second         Second            Second
 
-        // 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15
-        //         A          A             A
-        //         B          B             B
-
-        PrinterThread printerThreadA = new PrinterThread("MyPrinterThread", 5000L);
-        PrinterRunnable printerRunnableB = new PrinterRunnable("MyPrinterRunnable", 5000L);
-        Thread threadB = new Thread(printerRunnableB);
+        PrinterThread printerThreadMyFirst = new PrinterThread("First", 5000L);
+        PrinterRunnable printerRunnableMySecond = new PrinterRunnable("Second", 5000L);
+        Thread threadB = new Thread(printerRunnableMySecond);
 
         System.out.println("start");
 
-        printerThreadA.start();
+        printerThreadMyFirst.start();
         threadB.start();
 
         threadB.join();
