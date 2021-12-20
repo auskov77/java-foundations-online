@@ -4,8 +4,8 @@ import java.sql.*;
 
 public class UserJdbcImpl implements UserDAO {
     public static final String MY_DB_URL = "jdbc:MySql://localhost:3306/schema_users_messages?serverTimezone=UTC";
-    public static final String MY_DB_LOGIN = "*";
-    public static final String MY_DB_PASSWORD = "*";
+    public static final String MY_DB_LOGIN = "root";
+    public static final String MY_DB_PASSWORD = "root";
 
     @Override
     public int getAgeByUserName(String name) {
