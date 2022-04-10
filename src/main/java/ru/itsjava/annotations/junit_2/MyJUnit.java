@@ -15,6 +15,9 @@ public class MyJUnit {
     private int failedTests = 0;
     private final List<Method> beforeAllMethods = new ArrayList<>();
     private final List<Method> testMethods = new ArrayList<>();
+    private final List<Method> beforeMethods = new ArrayList<>();
+    private final List<Method> afterMethods = new ArrayList<>();
+    private final List<Method> afterAllMethods = new ArrayList<>();
 
     @SneakyThrows
     public void start() {
@@ -36,15 +39,28 @@ public class MyJUnit {
         // теперь должны пробежаться по тестовым методам
         for (Method method : testMethods) {
             try {
+                for (Method method1 : beforeMethods){
+                    method1.invoke(objTestClass);
+                }
                 // получаем кол-во прошедших тестов
                 method.invoke(objTestClass); // вызываем объект на объекте нашего тестового класса
                 System.out.println(method.getName() + " PASSED!");
                 passedTests++;
+                for (Method method2 : afterMethods){
+                    method2.invoke(objTestClass);
+                }
             } catch (InvocationTargetException exception) {
                 // получаем кол-во упавших тестов
                 System.out.println(method.getName() + " FAILED!");
                 failedTests++;
+                for (Method method1 : afterMethods){
+                    method1.invoke(objTestClass);
+                }
             }
+        }
+
+        for (Method method3 : afterAllMethods){
+            method3.invoke(objTestClass);
         }
         printResults(); // cntr+alt+m
     }
@@ -55,6 +71,12 @@ public class MyJUnit {
                 beforeAllMethods.add(method);
             } else if (method.isAnnotationPresent(Test.class)) { // если Test, то добавляем в эту коллецию
                 testMethods.add(method);
+            } else if (method.isAnnotationPresent(Before.class)){
+                beforeMethods.add(method);
+            } else if (method.isAnnotationPresent(After.class)){
+                afterMethods.add(method);
+            }else if (method.isAnnotationPresent(AfterAll.class)){
+                afterAllMethods.add(method);
             }
         }
     }
@@ -70,11 +92,11 @@ public class MyJUnit {
 
 //    Реализовать свои собственные аннотации:
 //
-// @Before -- запускает метод, помеченный этой аннотацией перед каждым тестом
+// @Before -- запускает метод, помеченный этой аннотацией перед каждым тестом   +
 //
-// @After -- запускает метод, помеченный этой аннотацией после каждого теста
+// @After -- запускает метод, помеченный этой аннотацией после каждого теста    +
 //
-// @AfterAll -- запускает метод, помеченный этой аннотацией после всех тестов
+// @AfterAll -- запускает метод, помеченный этой аннотацией после всех тестов   +
 //
-// DisplayName --  передать в строке название теста на русском языке и
+// DisplayName --  передать в строке название теста на русском языке и          +
 // вывести это название перед началом теста

@@ -7,6 +7,21 @@ public class MyFavoriteTest {
         System.out.println("BEFORE ALL");
     }
 
+    @Before
+    public void beforeMethod(){
+        System.out.println("BEFORE TEST");
+    }
+
+    @After
+    public void afterMethod(){
+        System.out.println("AFTER METHOD");
+    }
+
+    @AfterAll
+    public void afterAllMethod(){
+        System.out.println("AFTER ALL METHODS");
+    }
+
     @Test
     public void test1(){}
 
