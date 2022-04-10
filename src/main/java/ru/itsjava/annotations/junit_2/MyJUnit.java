@@ -31,36 +31,49 @@ public class MyJUnit {
         // все методы собираем по отдельным группам
         fillAllMethodsGroup();
 
+
         // пробежаться по коллекции beforeAllMethods
-        for (Method method : beforeAllMethods) {
-            method.invoke(objTestClass);
+        for (Method methodBeforeAll : beforeAllMethods) {
+            DisplayName displayName = methodBeforeAll.getAnnotation(DisplayName.class);
+            System.out.println(displayName.message());
+            methodBeforeAll.invoke(objTestClass);
         }
 
         // теперь должны пробежаться по тестовым методам
-        for (Method method : testMethods) {
+        for (Method methodTest : testMethods) {
+            DisplayName displayNameTest = methodTest.getAnnotation(DisplayName.class);
+            System.out.println(displayNameTest.message());
             try {
-                for (Method method1 : beforeMethods){
-                    method1.invoke(objTestClass);
+                for (Method methodBefore : beforeMethods) {
+                    DisplayName displayName = methodBefore.getAnnotation(DisplayName.class);
+                    System.out.println(displayName.message());
+                    methodBefore.invoke(objTestClass);
                 }
                 // получаем кол-во прошедших тестов
-                method.invoke(objTestClass); // вызываем объект на объекте нашего тестового класса
-                System.out.println(method.getName() + " PASSED!");
+                methodTest.invoke(objTestClass); // вызываем объект на объекте нашего тестового класса
+                System.out.println(methodTest.getName() + " PASSED!");
                 passedTests++;
-                for (Method method2 : afterMethods){
-                    method2.invoke(objTestClass);
+                for (Method methodAfter : afterMethods) {
+                    DisplayName displayName = methodAfter.getAnnotation(DisplayName.class);
+                    System.out.println(displayName.message());
+                    methodAfter.invoke(objTestClass);
                 }
             } catch (InvocationTargetException exception) {
                 // получаем кол-во упавших тестов
-                System.out.println(method.getName() + " FAILED!");
+                System.out.println(methodTest.getName() + " FAILED!");
                 failedTests++;
-                for (Method method1 : afterMethods){
-                    method1.invoke(objTestClass);
+                for (Method methodAfter : afterMethods) {
+                    DisplayName displayName = methodAfter.getAnnotation(DisplayName.class);
+                    System.out.println(displayName.message());
+                    methodAfter.invoke(objTestClass);
                 }
             }
         }
 
-        for (Method method3 : afterAllMethods){
-            method3.invoke(objTestClass);
+        for (Method methodAfterAll : afterAllMethods) {
+            DisplayName displayName = methodAfterAll.getAnnotation(DisplayName.class);
+            System.out.println(displayName.message());
+            methodAfterAll.invoke(objTestClass);
         }
         printResults(); // cntr+alt+m
     }
@@ -71,11 +84,11 @@ public class MyJUnit {
                 beforeAllMethods.add(method);
             } else if (method.isAnnotationPresent(Test.class)) { // если Test, то добавляем в эту коллецию
                 testMethods.add(method);
-            } else if (method.isAnnotationPresent(Before.class)){
+            } else if (method.isAnnotationPresent(Before.class)) {
                 beforeMethods.add(method);
-            } else if (method.isAnnotationPresent(After.class)){
+            } else if (method.isAnnotationPresent(After.class)) {
                 afterMethods.add(method);
-            }else if (method.isAnnotationPresent(AfterAll.class)){
+            } else if (method.isAnnotationPresent(AfterAll.class)) {
                 afterAllMethods.add(method);
             }
         }
@@ -91,12 +104,8 @@ public class MyJUnit {
 }
 
 //    Реализовать свои собственные аннотации:
-//
 // @Before -- запускает метод, помеченный этой аннотацией перед каждым тестом   +
-//
 // @After -- запускает метод, помеченный этой аннотацией после каждого теста    +
-//
 // @AfterAll -- запускает метод, помеченный этой аннотацией после всех тестов   +
-//
-// DisplayName --  передать в строке название теста на русском языке и          +
-// вывести это название перед началом теста
+// @DisplayName --  передать в строке название теста на русском языке и         +
+// вывести это название перед началом теста                                     +
