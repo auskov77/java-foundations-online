@@ -11,5 +11,5 @@ import lombok.ToString;
 public class BiologyStudent {
     private final String firstname;
     private final String lastname;
-    private final String coorse;
+    private final String course;
 }

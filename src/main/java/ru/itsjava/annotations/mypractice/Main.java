@@ -10,9 +10,6 @@ public class Main {
 //        MathStudent ivanov = new MathStudent("Ivan", "Ivanov","History");
 //        System.out.println(ivanov);
 
-
-
-
         Class<?> studentMathClass = Class.forName("ru.itsjava.annotations.mypractice.MathStudent");
         MathStudent ivanov = (MathStudent) studentMathClass.getConstructor(String.class, String.class, String.class)
                 .newInstance("Ivan", "Ivanov", "2");
@@ -28,7 +25,7 @@ public class Main {
         System.out.println();
         NameDepartment nameDepMath = MathStudent.class.getAnnotation(NameDepartment.class);
 
-        System.out.println("Студент: " + ivanov.getFirstname() + ", " + ivanov.getLastname() + ", " + "курс: " + ivanov.getCoorse() + ", " + nameDepMath.message());
+        System.out.println("Студент: " + ivanov.getFirstname() + ", " + ivanov.getLastname() + ", " + "курс: " + ivanov.getCourse() + ", " + nameDepMath.message());
         System.out.println();
 
         Class<?> studentBiologyClass = Class.forName("ru.itsjava.annotations.mypractice.BiologyStudent");
@@ -38,7 +35,7 @@ public class Main {
         System.out.println(studentBiologyClass.getAnnotations()[0]);
         System.out.println();
         NameDepartment nameDepBio = BiologyStudent.class.getAnnotation(NameDepartment.class);
-        System.out.println("Студент: " + semenov.getFirstname() + ", " + semenov.getLastname() + ", " + "курс: " + semenov.getCoorse() + ", " + nameDepBio.message());
+        System.out.println("Студент: " + semenov.getFirstname() + ", " + semenov.getLastname() + ", " + "курс: " + semenov.getCourse() + ", " + nameDepBio.message());
 
 
 
