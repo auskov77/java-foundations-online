@@ -11,6 +11,6 @@ import lombok.ToString;
 public class MathStudent {
     private final String firstname;
     private final String lastname;
-    private final String course;
+    private final int course;
 
 }

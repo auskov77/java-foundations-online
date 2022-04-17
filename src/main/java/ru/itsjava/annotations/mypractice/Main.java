@@ -11,8 +11,8 @@ public class Main {
 //        System.out.println(ivanov);
 
         Class<?> studentMathClass = Class.forName("ru.itsjava.annotations.mypractice.MathStudent");
-        MathStudent ivanov = (MathStudent) studentMathClass.getConstructor(String.class, String.class, String.class)
-                .newInstance("Ivan", "Ivanov", "2");
+        MathStudent ivanov = (MathStudent) studentMathClass.getConstructor(String.class, String.class, int.class)
+                .newInstance("Ivan", "Ivanov", 2);
         System.out.println(ivanov);
 
         Field ivan = studentMathClass.getDeclaredField("firstname");
@@ -29,8 +29,8 @@ public class Main {
         System.out.println();
 
         Class<?> studentBiologyClass = Class.forName("ru.itsjava.annotations.mypractice.BiologyStudent");
-        BiologyStudent semenov = (BiologyStudent) studentBiologyClass.getConstructor(String.class, String.class, String.class)
-                .newInstance("Semen", "Semenov", "4");
+        BiologyStudent semenov = (BiologyStudent) studentBiologyClass.getConstructor(String.class, String.class, int.class)
+                .newInstance("Semen", "Semenov", 4);
 
         System.out.println(studentBiologyClass.getAnnotations()[0]);
         System.out.println();
