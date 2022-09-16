@@ -16,11 +16,14 @@ public class Birds {
     }
 
     public void toSinging(){
+        System.out.println("Стандартное пение");
     }
 
     public void toDomestication(){
+        System.out.println("Стандартное проживание");
     }
 
     public void toHunting(){
+        System.out.println("Стандартное вдение охоты");
     }
 }
